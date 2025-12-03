@@ -36,12 +36,14 @@ while ($attempt -lt $MaxAttempts -and -not $won) {
     # BUG: Non-numeric input still consumes an attempt
     if (-not [int]::TryParse($guessRaw, [ref]$guess)) {
         Write-Host "That doesn't look like a valid number. Try again."
+        $attempt-- #BUGFIX
         continue
     }
 
     # BUG: Out-of-range guess also consumes an attempt
     if ($guess -lt 1 -or $guess -gt $MaxNumber) {
         Write-Host "Please enter a number between 1 and $MaxNumber."
+        $attempt-- #BUGFIX
         continue
     }
 
