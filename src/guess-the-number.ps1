@@ -66,4 +66,4 @@ if (-not $won) {
 }
 
 Write-Host ""
-Write-Host "Thanks for playing!"
+Write-Host "Thanks for playing the game!" #ENHANCEMENT
