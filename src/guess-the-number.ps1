@@ -9,7 +9,8 @@
 
 param(
     [int]$MaxNumber = 100,
-    [int]$MaxAttempts = 7
+    [int]$MaxAttempts = 7,
+    [string]$ShowHints = "off"
 )
 
 Write-Host "====================================="
@@ -24,6 +25,16 @@ Write-Host ""
 $secret = Get-Random -Minimum 1 -Maximum ($MaxNumber + 1)
 $attempt = 0
 $won = $false
+
+if ($ShowHints -eq "on") {
+    if ($secret -gt 50) {
+        Write-Host "[Hint] The number is greater than 50."
+    }
+    else {
+        Write-Host "[Hint] The number is 50 or below."
+    }
+    Write-Host ""
+}
 
 # IMPORTANT: Initialize $guess before using [ref]$guess
 [int]$guess = 0
